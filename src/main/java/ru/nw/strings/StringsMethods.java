@@ -81,35 +81,49 @@ public class StringsMethods {
 
   // Заменить каждое второе вхождение строки
   public String replaceEverySecond(String input, String target) {
-      String lowerInput = input.toLowerCase();
-      String lowerTarget = target.toLowerCase();
+    String lowerInput = input.toLowerCase();
+    String lowerTarget = target.toLowerCase();
 
-      StringBuilder result = new StringBuilder();
-      int index = 0;
-      int count = 0;
+    StringBuilder result = new StringBuilder();
+    int index = 0;
+    int count = 0;
 
-      while (true) {
-          int found = lowerInput.indexOf(lowerTarget, index);
-          if (found == -1) {
-              result.append(input.substring(index));
-              break;
-          }
-
-          // Добавляем текст до найденного вхождения
-          result.append(input, index, found);
-          count++;
-
-          // Каждое второе вхождение заменяем на "OOP"
-          if (count % 2 == 0) {
-              result.append("OOP");
-          } else {
-              // Сохраняем оригинальное написание (с сохранением регистра)
-              result.append(input, found, found + target.length());
-          }
-
-          index = found + target.length();
+    while (true) {
+      int found = lowerInput.indexOf(lowerTarget, index);
+      if (found == -1) {
+        result.append(input.substring(index));
+        break;
       }
 
-      return result.toString();
+      // Добавляем текст до найденного вхождения
+      result.append(input, index, found);
+      count++;
+
+      // Каждое второе вхождение заменяем на "OOP"
+      if (count % 2 == 0) {
+        result.append("OOP");
+      } else {
+        // Сохраняем оригинальное написание (с сохранением регистра)
+        result.append(input, found, found + target.length());
+      }
+
+      index = found + target.length();
+    }
+
+    return result.toString();
+  }
+
+  // Найти два средних знака строки
+  public String findTwoMiddleSigns(String inputString) {
+    if (inputString.length() % 2 != 0) {
+      return "Строка нечетная";
+    }
+    int middle = inputString.length() / 2;
+    return inputString.substring(middle - 1, middle + 1);
+  }
+
+  // Список студентов
+  public String getStudentsList(String lastName, int score, String subject) {
+    return String.format("Студент %-15s получил %-3d по %-10s", lastName, score, subject);
   }
 }

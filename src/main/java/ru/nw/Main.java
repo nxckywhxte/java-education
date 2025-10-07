@@ -1,7 +1,11 @@
 package ru.nw;
 
+import ru.nw.objects.Employee;
+import ru.nw.objects.Report;
 import ru.nw.strings.StringsMethods;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
   public static void main(String[] args) {
@@ -49,5 +53,24 @@ public class Main {
         "Object-oriented programming is a programming language model organized around objects rather than actions and data rather than logic. Object-oriented programming blabla. Object-oriented programming bla.";
     String replaceString = "Object-oriented programming";
     System.out.println(stringsMethods.replaceEverySecond(inputString, replaceString));
+
+    // Найти два средних знака строки
+    String input = "abfgcgdtrs";
+    System.out.println(stringsMethods.findTwoMiddleSigns(input));
+
+    // Список студентов
+    String lastName = "Иванов";
+    int score = 5;
+    String subject = "Математике";
+    System.out.println(stringsMethods.getStudentsList(lastName, score, subject));
+
+    // Отчет о сотрудниках, часть 1
+    List<Employee> employees = new ArrayList<>();
+    employees.add(new Employee("Nikita Belonogov", 5000));
+    employees.add(new Employee("Nick Peterson", 50000));
+    List<String> reports = Report.generateReport(employees);
+    for (String report : reports) {
+      System.out.println(report);
+    }
   }
 }
