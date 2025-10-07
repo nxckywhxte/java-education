@@ -67,7 +67,7 @@ public class StringsMethods {
           sb.append(" / ");
           sb.append(num2);
           sb.append(" = ");
-          sb.append((double)num1 / num2);
+          sb.append((double) num1 / num2);
           return sb.toString();
         } else {
           return "Ошибка: деление на ноль невозможно!";
@@ -77,5 +77,39 @@ public class StringsMethods {
         break;
     }
     return sb.toString();
+  }
+
+  // Заменить каждое второе вхождение строки
+  public String replaceEverySecond(String input, String target) {
+      String lowerInput = input.toLowerCase();
+      String lowerTarget = target.toLowerCase();
+
+      StringBuilder result = new StringBuilder();
+      int index = 0;
+      int count = 0;
+
+      while (true) {
+          int found = lowerInput.indexOf(lowerTarget, index);
+          if (found == -1) {
+              result.append(input.substring(index));
+              break;
+          }
+
+          // Добавляем текст до найденного вхождения
+          result.append(input, index, found);
+          count++;
+
+          // Каждое второе вхождение заменяем на "OOP"
+          if (count % 2 == 0) {
+              result.append("OOP");
+          } else {
+              // Сохраняем оригинальное написание (с сохранением регистра)
+              result.append(input, found, found + target.length());
+          }
+
+          index = found + target.length();
+      }
+
+      return result.toString();
   }
 }
