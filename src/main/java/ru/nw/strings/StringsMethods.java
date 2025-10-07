@@ -67,7 +67,7 @@ public class StringsMethods {
           sb.append(" / ");
           sb.append(num2);
           sb.append(" = ");
-          sb.append(num1 / num2);
+          sb.append((double)num1 / num2);
           return sb.toString();
         } else {
           return "Ошибка: деление на ноль невозможно!";
